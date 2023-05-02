@@ -1,0 +1,37 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Jupyter StableDiffusion",
+	"image": "mcr.microsoft.com/devcontainers/base:focal",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.11",
+			"installJupyterlab": true
+		},
+		"ghcr.io/devcontainers/features/conda:1": {
+			"addCondaForge": true,
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/nvidia-cuda:1": {
+			"cudaVersion": "11.8",
+			"installCudnn": true,
+			"cudnnVersion": "8.6.0.163"
+		}
+	},
+	"mounts": [
+		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
+	],
+	"runArgs": [
+		"--gpus",
+		"all"
+	]
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+	// Configure tool-specific properties.
+	// "customizations": {},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
